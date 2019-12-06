@@ -18,11 +18,14 @@ class ErShou(object):
 
 
     def text(self):
-        return self.district + "," + \
-                self.area + "," + \
-                self.name + "," + \
-                self.price + "," + \
-                self.desc + "," + \
-                self.pic + "," + \
-                self.rid + "," + \
-                self.hid 
+        if self.price.endswith("万"):
+            self.price = self.price[:-len("万")]
+
+        return "\"" + self.district + "\"" + "," + \
+                "\"" + self.area + "\"" + "," + \
+                "\"" + self.name + "\"" + "," + \
+                "\"" + self.price + "\"" + "," + \
+                "\"" + self.desc + "\"" + "," + \
+                "\"" + self.pic + "\"" + "," + \
+                "\"" + self.rid + "\"" + "," + \
+                "\"" + self.hid + "\""
