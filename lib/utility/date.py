@@ -22,7 +22,7 @@ def get_date_string():
     :return:
     """
     current = time.localtime()
-    return time.strftime("%Y%m%d", current)
+    return time.strftime("%Y-%m-%d", current)
 
 
 def get_year_month_string():
