@@ -4,3 +4,5 @@ data/
 *.html
 *.csv
 log/log.txt
+.DS_Store
+.vscode/

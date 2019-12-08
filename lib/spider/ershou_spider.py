@@ -13,6 +13,7 @@ from lib.spider.base_spider import *
 from lib.utility.date import *
 from lib.utility.path import *
 from lib.zone.area import *
+from lib.zone.city import *
 from lib.utility.log import *
 import lib.utility.version
 
@@ -40,7 +41,7 @@ class ErShouSpider(BaseSpider):
             if fmt == "csv":
                 for ershou in ershous:
                     # print(date_string + "," + xiaoqu.text())
-                    f.write("\"" + self.date_string + "\"," + ershou.text() + "\n")
+                    f.write("\"" + self.date_string + "\",\"" + get_chinese_city(city_name) + "\"," + ershou.text() + "\n")
         print("Finish crawl area: " + area_name + ", save data to : " + csv_file)
 
     @staticmethod
@@ -112,7 +113,7 @@ class ErShouSpider(BaseSpider):
 
     def start(self):
         city = get_city()
-        self.today_path = create_date_path("{0}/ershou".format(SPIDER_NAME), city, self.date_string)
+        self.today_path = create_full_path("{0}/ershou".format(SPIDER_NAME), city, self.date_string)
 
         t1 = time.time()  # 开始计时
 
