@@ -9,6 +9,7 @@ for city in "${cities[@]}"
 do
         echo "crawling $city..."
         python3 ershou.py $city &
+        Sleep 2
 done
 
 wait
