@@ -17,6 +17,7 @@ import logging
 import pprint
 
 from flask import Flask
+from flask import request
 
 from google.cloud import storage
 import googleapiclient.discovery
@@ -52,7 +53,6 @@ def do_craw():
         zone = ZONE
     
     instance = request.args.get('instance')
-    instance = request.args.get('zone')
     if not instance:
         instance = INSTANCE_NAME
     
@@ -64,6 +64,8 @@ def do_craw():
         instance=INSTANCE_NAME).execute()
 
     result = pprint.pformat(result)
+
+    #result = project + zone + instance
     return "Completed\n" + result
 
 
